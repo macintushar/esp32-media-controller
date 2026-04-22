@@ -3,7 +3,7 @@
   Hardware: ESP32-2432S028 (Cheap Yellow Display)
   Display:  ILI9341 240x320 via TFT_eSPI (HSPI)
   Touch:    XPT2046 via XPT2046_Touchscreen (VSPI, custom pins)
-  BLE:      ESP32-BLE-Keyboard in NimBLE mode
+  BLE:      ESP32-BLE-Keyboard (classic Bluedroid stack)
 
   Pairs with Mac / Linux as "CYD Media Remote" Bluetooth HID keyboard.
   Sends standard media keycodes: play/pause, next, previous,
@@ -14,6 +14,7 @@
 #include <TFT_eSPI.h>
 #include <XPT2046_Touchscreen.h>
 #include <BleKeyboard.h>
+#include <BLEDevice.h>   // for BLESecurity — security override after begin()
 
 // ---------------------------------------------------------------------------
 // Touch SPI pins (VSPI — separate bus from the display)
@@ -250,7 +251,21 @@ void setup() {
   digitalWrite(21, HIGH);
 
   // --- BLE keyboard ---
+  // Use a generic (non-Apple) VID/PID.
+  // The library defaults to Apple's VID (0x05AC) + Magic Keyboard PID (0x820A),
+  // which causes macOS to apply Apple-specific pairing profiles and stall.
+  bleKeyboard.set_vendor_id(0x05E1);   // generic HID-compliant device
+  bleKeyboard.set_product_id(0x0100);
   bleKeyboard.begin();
+
+  // Override the security mode set by the library (ESP_LE_AUTH_REQ_SC_MITM_BOND).
+  // MITM + Secure Connections causes macOS to stall mid-pairing while the ESP32
+  // fires onConnect() immediately at link layer — making the device appear
+  // connected on screen while macOS spins forever.
+  // Dropping to bonding-only (Just Works, no MITM) is standard for HID devices
+  // and works correctly on both macOS and Linux.
+  BLESecurity* pSecurity = new BLESecurity();
+  pSecurity->setAuthenticationMode(ESP_LE_AUTH_BOND);
 
   // --- Initial screen ---
   drawWaitingScreen();
