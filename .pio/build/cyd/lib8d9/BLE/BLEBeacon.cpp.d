@@ -1,0 +1,34 @@
+.pio/build/cyd/lib8d9/BLE/BLEBeacon.cpp.o: \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEBeacon.cpp \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/soc/esp32/include/soc/soc_caps.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/dio_qspi/include/sdkconfig.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEBeacon.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUUID.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32/cores/esp32/pgmspace.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/bt/host/bluedroid/api/include/api/esp_gatt_defs.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/bt/host/bluedroid/api/include/api/esp_bt_defs.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-log.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_timer/include/esp_timer.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/newlib/platform_include/stdio.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_common/include/esp_err.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_common/include/esp_compiler.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_hw_support/include/esp_etm.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_rom/esp32/include/esp32/rom/ets_sys.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_rom/include/esp_rom_sys.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/soc/esp32/include/soc/reset_reasons.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_config.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_level.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_common/include/esp_assert.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_color.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_buffer.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_timestamp.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_write.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_format.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_args.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_common/include/esp_macros.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_common/include/esp_assert.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_log_attr.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/esp_common/include/esp_attr.h \
+ /home/tushar/.platformio/packages/framework-arduinoespressif32-libs/esp32/include/log/include/esp_private/log_attr.h

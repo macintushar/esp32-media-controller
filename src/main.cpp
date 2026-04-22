@@ -71,7 +71,7 @@
 struct Button {
   const char* symbol;   // large glyph drawn centre of cell
   const char* label;    // small label drawn near bottom of cell
-  MediaKeyReport key;   // BLE media keycode
+  const uint8_t* key;   // BLE media keycode (2 bytes)
 };
 
 // Button grid — row-major order: [row][col]
@@ -79,14 +79,14 @@ struct Button {
 // Row 1: MUTE | VOL DOWN   | VOL UP
 static const Button BUTTONS[ROWS][COLS] = {
   {
-    { "|<<",  "PREV",     KEY_MEDIA_PREVIOUS_TRACK },
+    { "<<",  "PREV",     KEY_MEDIA_PREVIOUS_TRACK },
     { ">||",  "PLAY/PAUSE", KEY_MEDIA_PLAY_PAUSE   },
-    { ">>|",  "NEXT",     KEY_MEDIA_NEXT_TRACK     },
+    { ">>",  "NEXT",     KEY_MEDIA_NEXT_TRACK     },
   },
   {
-    { "><",   "MUTE",     KEY_MEDIA_MUTE           },
-    { "v()",  "VOL -",    KEY_MEDIA_VOLUME_DOWN    },
-    { "^()",  "VOL +",    KEY_MEDIA_VOLUME_UP      },
+    { "<",   "MUTE",     KEY_MEDIA_MUTE           },
+    { "< )",  "VOL -",    KEY_MEDIA_VOLUME_DOWN    },
+    { "< ))",  "VOL +",    KEY_MEDIA_VOLUME_UP      },
   },
 };
 
