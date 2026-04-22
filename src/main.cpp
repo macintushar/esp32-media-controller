@@ -251,11 +251,11 @@ void setup() {
   digitalWrite(21, HIGH);
 
   // --- BLE keyboard ---
-  // Use a generic (non-Apple) VID/PID.
-  // The library defaults to Apple's VID (0x05AC) + Magic Keyboard PID (0x820A),
-  // which causes macOS to apply Apple-specific pairing profiles and stall.
-  bleKeyboard.set_vendor_id(0x05E1);   // generic HID-compliant device
-  bleKeyboard.set_product_id(0x0100);
+  // Keep the default Apple VID/PID (0x05AC / 0x820A).
+  // iOS requires the Apple VID to correctly route Consumer Control (media key)
+  // HID reports — a generic VID causes iOS to accept the connection but silently
+  // ignore all media key presses. The macOS pairing stall was caused by the
+  // security mode (SC_MITM_BOND), not the VID/PID — that is fixed below.
   bleKeyboard.begin();
 
   // Override the security mode set by the library (ESP_LE_AUTH_REQ_SC_MITM_BOND).
@@ -323,9 +323,13 @@ void loop() {
   delay(150);
   drawButton(row, col, false);
 
-  // Send BLE media key
+  // Send BLE media key.
+  // btn.key is const uint8_t* (2 bytes). Cast to MediaKeyReport (uint8_t[2]) and
+  // dereference so the write(const MediaKeyReport) overload is selected, not
+  // write(uint8_t) or write(const uint8_t*, size_t), which send regular keyboard
+  // character reports instead of Consumer Control reports and do nothing on iOS.
   if (connected) {
-    bleKeyboard.write(btn.key);
+    bleKeyboard.write(*(const MediaKeyReport*)btn.key);
   }
 
   // Re-stamp status dot (button redraw may have partially overlapped it)
